@@ -14,7 +14,19 @@ public class NumberGame {
         for (int i = 10; i > 0; i--) {
             if (i > 1) {
                 System.out.println("You have " + i + " guesses left. Make your choice!");
-                int guess = scanner.nextInt();
+                int guess;
+                do {
+                    while (!scanner.hasNextInt()) {
+                        String input = scanner.next();
+                        System.out.println(input + " is not a valid number. Try again.");
+                    }
+                    guess = scanner.nextInt();
+                    if (guess < 1 || guess > 100) {
+                        System.out.println("Number must be between 1-100. Try again.");
+                        break;
+                    }
+                } while (guess < 0);
+
                 if (randomNumber < guess) {
                     System.out.println("It's smaller than " + guess);
                 } else if (randomNumber > guess) {
@@ -25,7 +37,18 @@ public class NumberGame {
                 }
             } else {
                 System.out.println("You only have " + i + " guess left. Choose wisely!");
-                int guess = scanner.nextInt();
+                int guess;
+                do {
+                    while (!scanner.hasNextInt()) {
+                        String input = scanner.next();
+                        System.out.println(input + " is not a valid number.");
+                    }
+                    guess = scanner.nextInt();
+                    if (guess < 1) {
+                        System.out.println("Number must be between 1-100. Try again.");
+                    }
+                } while (guess < 0);
+
                 if (randomNumber < guess) {
                     System.out.println("It's smaller than " + guess);
                 } else if (randomNumber > guess) {
