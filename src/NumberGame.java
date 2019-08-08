@@ -21,11 +21,10 @@ public class NumberGame {
                         System.out.println(input + " is not a valid number. Try again.");
                     }
                     guess = scanner.nextInt();
-//                    if (guess < 1) {
-//                        String input = scanner.next();
-//                        System.out.println(input + " is not a valid number. Number must be between 1-100. Try again.");
-//                    }
-                } while (guess < 0);
+                    if (guess < 1 || guess > 100) {
+                        System.out.println("Number must be between 1-100. Try again.");
+                    }
+                } while (guess < 0 || guess > 100);
 
                 if (randomNumber < guess) {
                     System.out.println("It's smaller than " + guess);
